@@ -1,10 +1,12 @@
-## deposit-utils
+# deposit-utils
 
 Deposit works to digital object repositories like Crossref and Datacite using statically-typed primitives that are validated against official XSD schemas.
 
-### Getting Started
+## Getting Started
 
-#### JSX
+Deposits for each supported registry (Crossref or Datacite) can be defined in one of three ways: JSX, Hyperscript, or plain JavaScript objects.
+
+### JSX
 
 Update your tsconfig.json to translate JSX syntax to function calls:
 
@@ -31,7 +33,7 @@ const depositXml = renderXml(
 );
 ```
 
-#### Hyperscript
+### Hyperscript
 
 ```ts
 import { x, renderXml } from "@pubpub/deposit-utils/datacite";
@@ -45,7 +47,7 @@ const depositXml = renderXml(
 );
 ```
 
-#### [xast](https://github.com/syntax-tree/xast) abstract syntax tree:
+### Plain objects ([xast](https://github.com/syntax-tree/xast) AST):
 
 ```ts
 import { renderXml } from "@pubpub/deposit-utils/datacite";
@@ -68,4 +70,12 @@ const xml = renderXml({
     },
   ],
 });
+```
+
+### Development
+
+Fetch XSD and generate TypeScript types:
+
+```sh
+npm run gen
 ```
