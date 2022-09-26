@@ -1,1 +1,1 @@
-export * from "./lib/crossref";
+export * from "./lib/crossref/index";

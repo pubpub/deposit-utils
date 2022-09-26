@@ -16,8 +16,8 @@
     "gen:datacite": "cd src/datacite && xsd-to-xast https://schema.datacite.org/meta/kernel-4.4/metadata.xsd"
   },
   "exports": {
-    "./crossref": "./lib/server",
-    "./datacite": "./lib/react"
+    "./crossref": "./lib/crossref/index.js",
+    "./datacite": "./lib/datacite/index.js"
   },
   "author": "",
   "license": "ISC",

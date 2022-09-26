@@ -6,7 +6,8 @@
     "outDir": "lib",
     "strict": true,
     "module": "ESNext",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "declaration": true
   },
   "include": ["src"]
 }
