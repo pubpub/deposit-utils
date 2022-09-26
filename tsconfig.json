@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "jsxFactory": "x",
+    "jsxFragmentFactory": "null",
+    "outDir": "lib",
+    "strict": true,
+    "module": "ESNext",
+    "moduleResolution": "node"
+  },
+  "include": ["src"]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "@pubpub/deposit-utils",
+  "version": "0.1.0",
+  "description": "",
+  "main": "lib/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "npm run gen",
+    "build": "tsc",
+    "postbuild": "npm run cp:crossref & npm run cp:datacite",
+    "cp:crossref": "cp -r src/crossref/cache src/crossref/xmlns lib/crossref",
+    "cp:datacite": "cp -r src/datacite/cache src/datacite/xmlns lib/datacite",
+    "gen": "npm run gen:crossref & npm run gen:datacite",
+    "gen:crossref": "cd src/crossref && xsd-to-xast https://data.crossref.org/schemas/crossref5.3.1.xsd",
+    "gen:datacite": "cd src/datacite && xsd-to-xast https://schema.datacite.org/meta/kernel-4.4/metadata.xsd"
+  },
+  "exports": {
+    "./crossref": "./lib/server",
+    "./datacite": "./lib/react"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "validate-with-xmllint": "^1.2.1",
+    "xast-util-to-xml": "^3.0.0",
+    "xastscript": "^3.1.0",
+    "xsd-to-xast": "^0.5.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.3"
+  }
+}
