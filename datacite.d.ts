@@ -1,1 +1,1 @@
-export * from "./lib/datacite/index";
+export * from "./dist/esm/datacite/index";
