@@ -86,7 +86,7 @@ export namespace x {
 export const x = xastscriptJsxFactory;
 
 export function validateXml(xml: string) {
-  validateXMLWithXSD(
+  return validateXMLWithXSD(
     xml,
     join(
       dirname(require.resolve("@pubpub/deposit-utils/crossref")),
@@ -95,13 +95,13 @@ export function validateXml(xml: string) {
   );
 }
 
-export function renderXml(
+export async function renderXml(
   node: Node | ElementMap[keyof ElementMap],
   validate = true
 ) {
   let xml = toXml(node);
   if (validate) {
-    validateXml(xml);
+    await validateXml(xml);
   }
   return xml;
 }
