@@ -4,7 +4,7 @@ import { x as xastscriptJsxFactory } from "xastscript";
 import { Element, Node } from "xastscript/lib";
 import type { children } from "xastscript/lib/jsx-classic";
 import * as Xastscript from "xastscript/lib/jsx-classic";
-import * as Schema from "./xmlns/datacite.org/schema/kernel-4";
+import type * as Schema from "./xmlns/datacite.org/schema/kernel-4";
 import { XastElement, XastText } from "./xmlns/xml-primitives.js";
 
 interface _Resource extends Schema.Resource {
