@@ -1,3 +1,4 @@
+import { dirname, join } from "path";
 import { validateXMLWithXSD } from "validate-with-xmllint";
 import { toXml } from "xast-util-to-xml";
 import { x as xastscriptJsxFactory } from "xastscript";
@@ -87,7 +88,10 @@ export const x = xastscriptJsxFactory;
 export function validateXml(xml: string) {
   validateXMLWithXSD(
     xml,
-    "cache/xsd/data.crossref.org/schemas/crossref5.3.1.xsd"
+    join(
+      dirname(require.resolve("@pubpub/deposit-utils/crossref")),
+      "cache/xsd/data.crossref.org/schemas/crossref5.3.1.xsd"
+    )
   );
 }
 

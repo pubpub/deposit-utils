@@ -1,3 +1,4 @@
+import { dirname, join } from "path";
 import { validateXMLWithXSD } from "validate-with-xmllint";
 import { toXml } from "xast-util-to-xml";
 import { x as xastscriptJsxFactory } from "xastscript";
@@ -226,7 +227,10 @@ export const x = xastscriptJsxFactory;
 export function validateXml(xml: string) {
   validateXMLWithXSD(
     xml,
-    "cache/xsd/schema.datacite.org/meta/kernel-4.4/metadata.xsd"
+    join(
+      dirname(require.resolve("@pubpub/deposit-utils/datacite")),
+      "cache/xsd/schema.datacite.org/meta/kernel-4.4/metadata.xsd"
+    )
   );
 }
 

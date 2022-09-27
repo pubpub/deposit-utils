@@ -1,6 +1,6 @@
 {
   "name": "@pubpub/deposit-utils",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,7 @@
     "gen:datacite": "cd src/datacite && xsd-to-xast https://schema.datacite.org/meta/kernel-4.4/metadata.xsd"
   },
   "exports": {
+    ".": "./index.js",
     "./crossref": {
       "import": "./dist/esm/crossref/index.js",
       "require": "./dist/cjs/crossref/index.js"
