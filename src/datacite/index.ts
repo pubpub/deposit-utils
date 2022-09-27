@@ -1,11 +1,11 @@
 import { validateXMLWithXSD } from "validate-with-xmllint";
 import { toXml } from "xast-util-to-xml";
 import { x as xastscriptJsxFactory } from "xastscript";
-import { Element, Node } from "xastscript/lib";
+import type { Element, Node } from "xastscript/lib";
 import type { children } from "xastscript/lib/jsx-classic";
 import * as Xastscript from "xastscript/lib/jsx-classic";
 import type * as Schema from "./xmlns/datacite.org/schema/kernel-4";
-import { XastElement, XastText } from "./xmlns/xml-primitives.js";
+import type { XastElement, XastText } from "./xmlns/xml-primitives";
 
 interface _Resource extends Schema.Resource {
   attributes: { xmlns: string };

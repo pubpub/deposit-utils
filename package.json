@@ -1,16 +1,18 @@
 {
   "name": "@pubpub/deposit-utils",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prebuild": "npm run gen",
-    "build": "tsc && tsc -p tsconfig-cjs.json",
-    "postbuild": "npm run cp:crossref & npm run cp:datacite",
-    "prepublish": "npm run build",
     "cp:crossref": "cp -r src/crossref/{cache,xmlns} dist/esm/crossref && cp -r src/crossref/{cache,xmlns} dist/cjs/crossref",
     "cp:datacite": "cp -r src/datacite/{cache,xmlns} dist/esm/datacite && cp -r src/datacite/{cache,xmlns} dist/cjs/datacite",
+    "prebuild": "npm run gen",
+    "build": "npm run build:dts & npm run build:esm & npm run build:cjs",
+    "build:dts": "tsc",
+    "build:esm": "esbuild src/crossref/index.ts src/datacite/index.ts --bundle --outdir=dist/esm --format=esm --platform=node",
+    "build:cjs": "esbuild src/crossref/index.ts src/datacite/index.ts --bundle --outdir=dist/cjs --format=cjs --platform=node",
+    "postbuild": "npm run cp:crossref & npm run cp:datacite",
     "gen": "npm run gen:crossref & npm run gen:datacite",
     "gen:crossref": "cd src/crossref && xsd-to-xast https://data.crossref.org/schemas/crossref5.3.1.xsd",
     "gen:datacite": "cd src/datacite && xsd-to-xast https://schema.datacite.org/meta/kernel-4.4/metadata.xsd"
@@ -25,15 +27,16 @@
       "require": "./dist/cjs/datacite/index.js"
     }
   },
-  "author": "",
-  "license": "ISC",
+  "author": "PubPub Team <hello@pubpub.org>",
+  "license": "MIT",
   "dependencies": {
-    "validate-with-xmllint": "^1.2.1",
+    "validate-with-xmllint": "^1.2.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.15.9",
+    "typescript": "^4.8.3",
     "xast-util-to-xml": "^3.0.0",
     "xastscript": "^3.1.0",
     "xsd-to-xast": "^0.5.0"
-  },
-  "devDependencies": {
-    "typescript": "^4.8.3"
   }
 }

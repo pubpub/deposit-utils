@@ -3,11 +3,12 @@
     "jsx": "react",
     "jsxFactory": "x",
     "jsxFragmentFactory": "null",
-    "outDir": "dist/esm",
+    "outDir": "dist/dts",
     "strict": true,
     "module": "ESNext",
     "moduleResolution": "node",
-    "declaration": true
+    "declaration": true,
+    "emitDeclarationOnly": true
   },
   "include": ["src"]
 }

@@ -1,1 +1,1 @@
-export * from "./dist/esm/crossref/index";
+export * from "./dist/dts/crossref/index";
