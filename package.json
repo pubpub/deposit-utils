@@ -1,17 +1,19 @@
 {
   "name": "@pubpub/deposit-utils",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cp:xmlns": "cp -r src/crossref/xmlns dist/dts/crossref && cp -r src/datacite/xmlns dist/dts/datacite",
+    "cp:cache-cjs": "cp -r src/crossref/cache dist/cjs/crossref && cp -r src/datacite/cache dist/cjs/datacite",
+    "cp:cache-esm": "cp -r src/crossref/cache dist/esm/crossref && cp -r src/datacite/cache dist/esm/datacite",
     "prebuild": "npm run gen",
     "build": "npm run build:dts && npm run build:esm && npm run build:cjs",
     "build:dts": "tsc",
-    "build:esm": "esbuild src/crossref/index.ts src/datacite/index.ts --bundle --outdir=dist/esm --format=esm --platform=node",
     "build:cjs": "esbuild src/crossref/index.ts src/datacite/index.ts --bundle --outdir=dist/cjs --format=cjs --platform=node",
-    "postbuild": "npm run cp:xmlns",
+    "build:esm": "esbuild src/crossref/index.ts src/datacite/index.ts --bundle --outdir=dist/esm --format=esm --platform=node",
+    "postbuild": "npm run cp:xmlns && npm run cp:cache-cjs && npm run cp:cache-esm",
     "gen": "npm run gen:crossref & npm run gen:datacite",
     "gen:crossref": "cd src/crossref && xsd-to-xast https://data.crossref.org/schemas/crossref5.3.1.xsd",
     "gen:datacite": "cd src/datacite && xsd-to-xast https://schema.datacite.org/meta/kernel-4.4/metadata.xsd"

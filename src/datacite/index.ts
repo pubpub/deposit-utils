@@ -224,7 +224,10 @@ export namespace x {
 export const x = xastscriptJsxFactory;
 
 export function validateXml(xml: string) {
-  validateXMLWithXSD(xml, "metadata.xsd");
+  validateXMLWithXSD(
+    xml,
+    "cache/xsd/schema.datacite.org/meta/kernel-4.4/metadata.xsd"
+  );
 }
 
 export function renderXml(
