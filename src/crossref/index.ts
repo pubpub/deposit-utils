@@ -85,10 +85,7 @@ export namespace x {
 export const x = xastscriptJsxFactory;
 
 export function validateXml(xml: string) {
-  validateXMLWithXSD(
-    xml,
-    "cache/xsd/data.crossref.org/schemas/crossref5.3.1.xsd"
-  );
+  validateXMLWithXSD(xml, "crossref5.3.1.xsd");
 }
 
 export function renderXml(

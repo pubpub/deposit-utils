@@ -224,7 +224,7 @@ export namespace x {
 export const x = xastscriptJsxFactory;
 
 export function validateXml(xml: string) {
-  validateXMLWithXSD(xml, "kernel-4.4/metadata.xsd");
+  validateXMLWithXSD(xml, "metadata.xsd");
 }
 
 export function renderXml(

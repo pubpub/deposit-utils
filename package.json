@@ -1,24 +1,30 @@
 {
   "name": "@pubpub/deposit-utils",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "main": "lib/index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "npm run gen",
-    "build": "tsc",
+    "build": "tsc && tsc -p tsconfig-cjs.json",
     "postbuild": "npm run cp:crossref & npm run cp:datacite",
     "prepublish": "npm run build",
-    "cp:crossref": "cp -r src/crossref/cache src/crossref/xmlns lib/crossref",
-    "cp:datacite": "cp -r src/datacite/cache src/datacite/xmlns lib/datacite",
+    "cp:crossref": "tee dist/esm/crossref/crossref5.3.1.xsd dist/cjs/crossref/crossref5.3.1.xsd < src/crossref/cache/xsd/data.crossref.org/schemas/crossref5.3.1.xsd >/dev/null",
+    "cp:datacite": "tee dist/esm/datacite/metadata.xsd dist/cjs/datacite/metadata.xsd < src/datacite/cache/xsd/schema.datacite.org/meta/kernel-4.4/metadata.xsd >/dev/null",
     "gen": "npm run gen:crossref & npm run gen:datacite",
     "gen:crossref": "cd src/crossref && xsd-to-xast https://data.crossref.org/schemas/crossref5.3.1.xsd",
     "gen:datacite": "cd src/datacite && xsd-to-xast https://schema.datacite.org/meta/kernel-4.4/metadata.xsd"
   },
   "exports": {
-    "./crossref": "./lib/crossref/index.js",
-    "./datacite": "./lib/datacite/index.js"
+    "./crossref": {
+      "import": "./lib/crossref/index.js",
+      "require": "./lib/crossref/index.js"
+    },
+    "./datacite": {
+      "import": "./lib/datacite/index.js",
+      "require": "./lib/datacite/index.js"
+    }
   },
   "author": "",
   "license": "ISC",

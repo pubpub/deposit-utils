@@ -3,7 +3,7 @@
     "jsx": "react",
     "jsxFactory": "x",
     "jsxFragmentFactory": "null",
-    "outDir": "lib",
+    "outDir": "dist/esm",
     "strict": true,
     "module": "ESNext",
     "moduleResolution": "node",
