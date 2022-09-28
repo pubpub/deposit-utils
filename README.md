@@ -1,6 +1,6 @@
 # deposit-utils
 
-Deposit works to digital object repositories like Crossref and Datacite using statically-typed primitives that are validated against official XSD schemas.
+Construct deposit metadata for digital object repositories like Crossref and Datacite using statically-typed primitives that are validated against official XSD schemas.
 
 ## Getting Started
 
